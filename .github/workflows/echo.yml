@@ -1,0 +1,16 @@
+name: Run Robot Test inside Docker Container
+
+on:
+  worlflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Build Docker Image
+      run: docker build -t api-automation-ebird .
+      run: docker run --rm api-automation-ebird
