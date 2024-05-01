@@ -1,7 +1,7 @@
 name: Run Robot Test inside Docker Container
 
 on:
-  worlflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   Run Tests:
