@@ -13,5 +13,5 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t api-automation-ebird >
+        docker build -t api-automation-ebird
         docker run --rm api-automation-ebird
