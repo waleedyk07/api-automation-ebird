@@ -12,5 +12,6 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build Docker Image
-      run: docker build -t api-automation-ebird .
-      run: docker run --rm api-automation-ebird
+      run: |
+        docker build -t api-automation-ebird >
+        docker run --rm api-automation-ebird
