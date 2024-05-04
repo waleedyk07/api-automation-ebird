@@ -14,4 +14,4 @@ COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # RUN sh entrypoint.sh
-ENTRYPOINT ["sh", "entrypoint.sh", "$REPORT_PATH"]
+ENTRYPOINT ["sh", "entrypoint.sh", $REPORT_PATH]
