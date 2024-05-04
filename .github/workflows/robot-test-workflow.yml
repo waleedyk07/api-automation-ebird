@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-        REPORT_PATH: test-results
+        REPORT_PATH: robot-test-results
 
 jobs:
   run_tests:
