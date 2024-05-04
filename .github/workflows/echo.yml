@@ -22,5 +22,5 @@ jobs:
       with:
         path: /test-results/report.html
     
-    - name: Display Report Files
-        run: ls -R /test-results
+    # - name: Display Report Files
+    #     run: ls -R /test-results
