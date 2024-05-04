@@ -13,9 +13,9 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        mkdir -p test-results
+        mkdir -p $PWD/test-results
         docker build -t api-automation-ebird .
-        docker run -v test-results:/test-results --rm api-automation-ebird
+        docker run -v $PWD/test-results:/test-results --rm api-automation-ebird
 
     - name: Test Report Artifact
       uses: actions/upload-artifact@v4
