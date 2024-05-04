@@ -1,0 +1,29 @@
+name: Robot Test
+
+on:
+  workflow_dispatch:
+
+env:
+        REPORT_PATH: test-results
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Build Docker Image
+      run: |
+        mkdir -p $PWD/$REPORT_PATH
+        docker build --build-arg REPORT_PATH=$REPORT_PATH -t api-automation-ebird .
+        docker run -v $PWD/$REPORT_PATH:/$REPORT_PATH --rm api-automation-ebird
+
+    - name: Upload Test Report Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        path: ${{env.REPORT_PATH}}/report.html
+    
+    - name: Display Report Files
+      run: ls -R $REPORT_PATH
