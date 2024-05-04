@@ -2,7 +2,7 @@ FROM python
 
 ARG REPORT_PATH
 
-RUN mkdir -p test-results
+RUN mkdir -p $REPORT_PATH
 RUN mkdir -p api-automation-ebird
 
 WORKDIR /api-automation-ebird
