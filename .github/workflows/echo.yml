@@ -20,7 +20,7 @@ jobs:
     - name: Test Report Artifact
       uses: actions/download-artifact@v4
       with:
-        path: /test-results/report.html
+        path: test-results/report.html
     
     - name: Display Report Files
-      run: ls -R /test-results
+      run: ls -R test-results
