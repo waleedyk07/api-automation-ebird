@@ -1,3 +1,3 @@
 #!/bin/sh
 
-robot --outputdir /$1 .
+robot --outputdir $PWD/$1 .
