@@ -1,6 +1,8 @@
 FROM python
 
+RUN mkdir -p test-results
 RUN mkdir -p api-automation-ebird
+
 WORKDIR /api-automation-ebird
 
 # copy source code files

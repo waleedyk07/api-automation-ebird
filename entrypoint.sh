@@ -1,3 +1,3 @@
 #!/bin/sh
 
-robot --outputdir results .
+robot --outputdir /test-results .
