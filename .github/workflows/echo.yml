@@ -17,10 +17,9 @@ jobs:
         # docker build -t api-automation-ebird .
         docker run -v /test-results:/test-results --rm api-automation-ebird
 
-    steps:
     - uses: actions/download-artifact@v4
       with:
         name: Test Report Artifact
         path: /test-results/report.html
-    # - name: Display Report Files
-    #     run: ls -R /test-results
+    - name: Display Report Files
+        run: ls -R /test-results
