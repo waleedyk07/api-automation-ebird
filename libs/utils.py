@@ -10,7 +10,7 @@ def generate_profile():
 	"lastName": generate_string(10),
 	"street": generate_string(10),
 	"city": generate_string(10),
-	"state": generate_string(2),
+	"state": generate_string(2).upper(),
 	"zipCode": generate_string(4),
 	"phoneNumber": generate_string(10),
 	"ssn": generate_string(10),

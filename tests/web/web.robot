@@ -3,12 +3,11 @@ Library  Collections
 Library	SeleniumLibrary
 Library	../../libs/utils.py	WITH NAME		UTILS
 
-*** Variables ***
-${URL}	https://parabank.parasoft.com/parabank/index.htm
+Variables    ../../resource/config.py
 
 *** Test Cases ***
-Chrome - Open Browser
-	Open Browser	${URL}	chrome
+Open Browser
+	Open Browser	${web_base_url}	${browser}
 	Sleep	1s
 
 Goto Register
@@ -53,7 +52,7 @@ Enter Register Form Data
 
 	# Check if user is successfully registered
 	${p_text}=	Get Text	xpath=//div[@id='rightPanel']/p
-	Should Be Equal	${p_text}	Your account was created successfully. You are now logged in.
+	Should Be Equal	${p_text}	${validation_register_content}
 
 Logout the new created user
 	Click Element	xpath=//a[text()='Log Out']
@@ -61,7 +60,7 @@ Logout the new created user
 	
 Open in new tab and Login with Credentials
 	# Open New Tab
-	Execute JavaScript	window.open('${URL}', '_blank')
+	Execute JavaScript	window.open('${web_base_url}', '_blank')
 	Switch Window	NEW
 
 	# Enter previously credentials & Submit
@@ -73,6 +72,6 @@ Open in new tab and Login with Credentials
 
 	# Check if user is successfully logged in
 	${h1_title}=	Get Text	xpath=//h1[@class='title']
-	Should Be Equal	${h1_title}    Accounts Overview
+	Should Be Equal	${h1_title}    ${validation_login_content}
 	
 	Close Browser
