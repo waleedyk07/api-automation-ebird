@@ -98,14 +98,14 @@ Python Robot Framework
             parabank.robot
 ```
 ## Run in Local Host
-Execute Command below command in `project_root`
+Execute below command in `project_root`
 ```
 robot --outputdir <OUTPUT DIRECTORY PATH> tests/.
 ```
 
 ## Run in Docker Container Locally
 Make sure that `docker` deamon is running locally.
-Execute Command below commands in `project_root`.
+Execute below commands in `project_root`.
 ```
 docker build --build-arg REPORT_PATH=reports -t api-automation-ebird .
 ```
