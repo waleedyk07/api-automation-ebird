@@ -1,17 +1,17 @@
 *** Settings ***
 Library  Collections
 Library	SeleniumLibrary
-Library	../../libs/utils.py	WITH NAME		UTILS
 
-Variables    ../../resource/config.py
+Variables	../../resource/config.py
 
 *** Keywords ***
-Parabank Page Is Open
-	Open Browser	${web_base_url}	${browser}
+Open URL
+        [Arguments]    ${web_base_url}    ${browser}
+	Open Browser	${web_base_url}    ${browser}
 	Sleep	1s
 
-Register Parabank User
-	${profile}=	UTILS.generate_profile
+Register Profile
+        [Arguments]    ${profile}
 	
 	${firstName}=	Get From Dictionary	${profile}	firstName
 	${lastName}=	Get From Dictionary	${profile}	lastName
@@ -23,10 +23,6 @@ Register Parabank User
 	${ssn}=	Get From Dictionary	${profile}	ssn
 	${username}=	Get From Dictionary	${profile}	username
 	${password}=	Get From Dictionary	${profile}	password
-
-	# Share this variable to test suit to used for login
-	Set Global Variable	  ${username}
-	Set Global Variable	  ${password} 
 	
 	# Enter Values to register a profile & Submit
 	Input Text	id=customer.firstName	${firstName}
@@ -44,10 +40,11 @@ Register Parabank User
 	Sleep	2s
 
 	Click Element	css=input.button[value='Register']
+        
+        [Return]    ${username}    ${password}
 Register page is Open
         Click Element	xpath=//a[text()='Register']
 Can See Welcome Page
-	# Check if user is successfully registered
 	${p_text}=	Get Text	xpath=//div[@id='rightPanel']/p
 	Should Be Equal	${p_text}	${validation_register_content}
 
@@ -55,10 +52,12 @@ Logout User
 	Click Element	xpath=//a[text()='Log Out']
 	Sleep	2s
 
-Tab Is Open
+Open Tab
+        [Arguments]    ${web_base_url}
 	Execute JavaScript	window.open('${web_base_url}', '_blank')
 	Switch Window	NEW
 Enter Credentials
+        [Arguments]    ${username}    ${password}
 	Input Text	name=username	${username}
 	Input Text	name=password	${password}
 	Click Element	css=input.button[value='Log In']
