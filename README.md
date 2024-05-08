@@ -51,9 +51,20 @@ https://api.ebird.org/v2/data/obs/PK/recent
 7. Extend the framework by writing utilities. For example, authentication is going to be used on every API request. So, there is no need to write auth test every time, will write a utility to generate token and utilize it every use case.
 
 ## 2. Propose an example of contract testing for an e-commerce application and the theoretical implementation. What tools will you use?
-As per best practices, API projects have swaggers that has contract definations in it like data models, authentication mechanisim and related details which define how APIs interact with each other.<br>In case there is no swagger, either we write a swagger or we can write a Postman collection for it.<br><br>
-**Example:** `Get Auth Token from Auth API`=>`Get List of Stores`=>`Get List of Products by Store ID`=>`Get Details of Product by ID`=>`POST Product ID to Cart`.<br><br>
-In above given example, each block is an endpoint, for which there are going to be separate usecase addionally there is going to be atleast 1 use case that complete the whole workflow consisting of all API calls in sequence.
+According to best practices, API projects typically include Swagger documents containing contract definitions, such as data models, authentication mechanisms, and related details that specify how APIs interact with each other.
+
+If a Swagger document is not available, we have two options: either we create a Swagger document or we generate a Postman collection.
+
+**For example:** <br>
+`START`
+=> `1. Get Auth Token from Auth API`
+=> `2. Get List of Stores` 
+=> `3. Get List of Products by Store ID` 
+=> `4. Get Details of Product by ID` 
+=> `5. POST Product ID to Cart`
+=> `END`
+
+In the example provided, each block represents an endpoint. Each endpoint serves a specific use case. Additionally, there will be at least one use case that encompasses the entire workflow, consisting of all API calls executed in sequence.
 
 # Project Details
 ## Framework
